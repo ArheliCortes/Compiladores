@@ -1,4 +1,6 @@
-variable = 5;
-si (5 > 8) {
-   variable = variable + 1 ;
+//
+variable1=5;
+si ( 5 > 1 ){
+
+  variable1=1;
 }
