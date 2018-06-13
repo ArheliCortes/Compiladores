@@ -123,6 +123,7 @@ public class AlexicoUI extends javax.swing.JFrame {
           File file = new File("fichero.txt");
           PrintWriter pw;
           try {
+              
             pw = new PrintWriter(file);
             pw.print(this.txtatexto.getText());
             pw.close();
@@ -145,7 +146,7 @@ public class AlexicoUI extends javax.swing.JFrame {
                           res+="Error símbolo "+ lex.lexeme +" no reconocido\n";
                         break;
                    
-                        case ENT: case ID: 
+                        case ENT: case ID: case RISTRA: case GRAF: case NAT:
                             res+="TOKEN "+token+" "+lex.lexeme+"\n";    
                         break;
                         default:

@@ -1,4 +1,8 @@
-/* Congratulation!!!*/
+fontana@/
+var1:1_
+msj:"HOLAMUNDO"_
+escribe(msj)_
+si(var1<10)</var1++_/>
 
 
-
+/@

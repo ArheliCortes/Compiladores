@@ -3,9 +3,10 @@ import static mx.ipn.logica.ALexico.Token.*;
 %%
 %class Lexer
 %type Token
-L = [a-zA-Z_]
+L = [a-zA-Z_" "]
 D = [0-9]
 S=[&/%$'?¿!¡*~]
+Comilla=[']
 FinLinea = [\r|\n|\r\n]
 CaracterEntrada = [^\r\n]
 ComentarioTradicional   = "#*" [^*] ~"*#" | "#*" "*"+ "#"
@@ -13,7 +14,8 @@ FindeComentarioLinea    = "#" {CaracterEntrada}* {FinLinea}?
 ComentarioContenido     = ( [^*] | #*+ [^#*] )*
 Documentacion = "#**" {ComentarioContenido} "*"+ "#"
 Comentario = {ComentarioTradicional} | {FindeComentarioLinea} | {Documentacion}
-WHITE=[\t\r\n|\t|" "]
+WHITE=[\r\n]
+SPACE=[\t|" "]
 VACIO=[" "]
 NULO=[0]
 %{
@@ -21,8 +23,8 @@ public String lexeme;
 %}
 %%
 {WHITE} {/*Ignore*/}
+{SPACE} {return ESPACIO_BLANCO}
 {Comentario} {/*Ignore*/}
-
 ":"  {return ASIGNAR;}
 ":+"  {return ASIGNAR_MAS;}
 ":-"  {return ASIGNAR_MENOS;}
@@ -43,7 +45,7 @@ public String lexeme;
 "--"  {return POS_DECREMENTO;}
 "&&"  {return AND;}
 "||"  {return OR;}
-"'"  {return COMILLA;}
+{Comilla}  {return COMILLA;}
 ","  {return COMA;}
 "("  {return PARENTESIS_ABIERTO;}
 ")"  {return PARENTESIS_CERRADO;}
@@ -77,6 +79,6 @@ public String lexeme;
 {L}({L}|{D})* {lexeme=yytext(); return ID;}
 ("(-"{D}+")")|{D}+ {lexeme=yytext(); return ENT;}
 {D}* {lexeme=yytext(); return NAT;}
-({D}|{L}|{S})*|{VACIO} {lexeme=yytext(); return RISTRA;}
-{D}|{L}|{S}|("'"{VACIO}"'") {lexeme=yytext(); return GRAF;}
+"\""({D}|{L}|{S})*"\""|"\""{VACIO}"\"" {lexeme=yytext(); return RISTRA;}
+{Comilla}({D}|{L}|{S}){Comilla}|({Comilla}{VACIO}{Comilla}) {lexeme=yytext(); return GRAF;}
 . {return ERROR;}
