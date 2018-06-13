@@ -11,7 +11,8 @@ public class Alexico {
     }
     
     public static void generar(String path){
-       File file = new File (path);
+     
+        File file = new File (path);
        JFlex.Main.generate(file);
    
     }

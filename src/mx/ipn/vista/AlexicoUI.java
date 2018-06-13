@@ -142,10 +142,10 @@ public class AlexicoUI extends javax.swing.JFrame {
             else{
                 switch(token){
                         case ERROR:
-                          res+="Error símbolo"+ token +"no reconocido";
+                          res+="Error símbolo "+ lex.lexeme +" no reconocido\n";
                         break;
                    
-                        case INT: case ID: 
+                        case ENT: case ID: 
                             res+="TOKEN "+token+" "+lex.lexeme+"\n";    
                         break;
                         default:
