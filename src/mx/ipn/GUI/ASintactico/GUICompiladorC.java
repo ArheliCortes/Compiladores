@@ -63,7 +63,7 @@ public class GUICompiladorC extends javax.swing.JFrame {
         jMenu1.setText("Archivo");
 
         jMenuNuevo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/nuevo.png"))); // NOI18N
+        jMenuNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/ipn/vista/imagenes/nuevo.png"))); // NOI18N
         jMenuNuevo.setText("Nuevo");
         jMenuNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,7 +73,7 @@ public class GUICompiladorC extends javax.swing.JFrame {
         jMenu1.add(jMenuNuevo);
 
         jMenuAbrir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuAbrir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/abrir.png"))); // NOI18N
+        jMenuAbrir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/ipn/vista/imagenes/abrir.png"))); // NOI18N
         jMenuAbrir.setText("Abrir");
         jMenuAbrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,7 +83,7 @@ public class GUICompiladorC extends javax.swing.JFrame {
         jMenu1.add(jMenuAbrir);
 
         jMenuGuardar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/guardar.png"))); // NOI18N
+        jMenuGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/ipn/vista/imagenes/guardar.png"))); // NOI18N
         jMenuGuardar.setText("Guardar");
         jMenu1.add(jMenuGuardar);
 
@@ -92,12 +92,12 @@ public class GUICompiladorC extends javax.swing.JFrame {
         jMenu2.setText("Acción");
 
         jMenuCompilar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F9, 0));
-        jMenuCompilar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/compilar.png"))); // NOI18N
+        jMenuCompilar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/ipn/vista/imagenes/compilar.png"))); // NOI18N
         jMenuCompilar.setText("Compilar");
         jMenu2.add(jMenuCompilar);
 
         jMenuVTokens.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuVTokens.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/verTokens.png"))); // NOI18N
+        jMenuVTokens.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/ipn/vista/imagenes/verTokens.png"))); // NOI18N
         jMenuVTokens.setText("Ver Tokens");
         jMenu2.add(jMenuVTokens);
 
