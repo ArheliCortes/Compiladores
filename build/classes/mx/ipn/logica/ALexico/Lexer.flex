@@ -3,7 +3,7 @@ import static mx.ipn.logica.ALexico.Token.*;
 %%
 %class Lexer
 %type Token
-L = [a-zA-Z_" "]
+L = [a-zA-Z]
 D = [0-9]
 S=[&/%$'?¿!¡*~]
 Comilla=[']
@@ -25,7 +25,7 @@ public String lexeme;
 {WHITE} {/*Ignore*/}
 {SPACE} {return ESPACIO_BLANCO}
 {Comentario} {/*Ignore*/}
-":"  {return ASIGNAR;}
+"::"  {return ASIGNAR;}
 ":+"  {return ASIGNAR_MAS;}
 ":-"  {return ASIGNAR_MENOS;}
 ":*"  {return ASIGNAR_POR;}
@@ -34,8 +34,8 @@ public String lexeme;
 "!=" {return DIFERENTE;}
 ">"  {return MAYOR;}
 "<"  {return MENOR;}
-"<="  {return MENOR_IGUAL;}
-">="  {return MAYOR_IGUAL;}
+"<::"  {return MENOR_IGUAL;}
+"<::"  {return MAYOR_IGUAL;}
 "+"  {return SUMA;}
 "-"  {return RESTA;}
 "*"  {return MUL;}
@@ -43,8 +43,8 @@ public String lexeme;
 "%"  {return MOD;}
 "++"  {return POS_INCREMENTO;}
 "--"  {return POS_DECREMENTO;}
-"&&"  {return AND;}
-"||"  {return OR;}
+"&&"  {return YLOGICO;}
+"||"  {return OLOGICO;}
 {Comilla}  {return COMILLA;}
 ","  {return COMA;}
 "("  {return PARENTESIS_ABIERTO;}
@@ -52,10 +52,10 @@ public String lexeme;
 "{"  {return LLAVE_ABIERTA;}
 "}"  {return LLAVE_CERRADA;}
 "_"  {return GUION_BAJO;}
-"</" {return DIPLE_ABIERTO;}
-"/>" {return DIPLE_CERRADO;}
-"@/" {return ARROBA_ABIERTO;}
-"/@" {return ARROBA_CERRADO;}
+"<" {return DIPLE_ABIERTO;}
+">" {return DIPLE_CERRADO;}
+"@" {return ARROBA_ABIERTO;}
+"@" {return ARROBA_CERRADO;}
 "si" {return SI;}
 "contrasi" {return CONTRASI;}
 "contra" {return CONTRA;}
@@ -69,7 +69,6 @@ public String lexeme;
 "enotrocaso" {return ENOTROCASO;}
 {VACIO} {return VACIO;}
 "regresa" {return REGRESA;}
-"imprime"   {return IMPRIME;}
 "escribe" {return ESCRIBE;}
 "lee" {return LEE;}
 "fontana" {return FONTANA;}
