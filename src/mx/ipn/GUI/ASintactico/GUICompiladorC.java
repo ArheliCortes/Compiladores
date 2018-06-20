@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package mx.ipn.GUI.ASintactico;
+package mx.ipn.GUI.vista;
 
 /**
  *
@@ -14,8 +9,13 @@ public class GUICompiladorC extends javax.swing.JFrame {
     /**
      * Creates new form GUICompiladorC
      */
+    private String dirNuevo="";
+    private String nomNuevo="";
     public GUICompiladorC() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setTitle("CompiladorEjemplo");
+        principal.setEnabled(false);
     }
 
     /**
@@ -28,12 +28,11 @@ public class GUICompiladorC extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        principal = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        salida = new javax.swing.JTextArea();
+        lineCounter = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuNuevo = new javax.swing.JMenuItem();
@@ -46,19 +45,25 @@ public class GUICompiladorC extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        principal.setColumns(20);
+        principal.setRows(5);
+        jScrollPane1.setViewportView(principal);
 
         jLabel1.setText("Salida");
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane3.setViewportView(jTextArea3);
+        salida.setColumns(20);
+        salida.setRows(5);
+        jScrollPane3.setViewportView(salida);
+
+        lineCounter.setEditable(false);
+        lineCounter.setColumns(2);
+        lineCounter.setLineWrap(true);
+        lineCounter.setRows(2);
+        lineCounter.setTabSize(2);
+        lineCounter.setText("1");
+        lineCounter.setAutoscrolls(false);
+        lineCounter.setCaretColor(new java.awt.Color(51, 51, 255));
+        lineCounter.setFocusable(false);
 
         jMenu1.setText("Archivo");
 
@@ -85,20 +90,35 @@ public class GUICompiladorC extends javax.swing.JFrame {
         jMenuGuardar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
         jMenuGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/ipn/vista/imagenes/guardar.png"))); // NOI18N
         jMenuGuardar.setText("Guardar");
+        jMenuGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuGuardarActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuGuardar);
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("AcciÃ³n");
+        jMenu2.setText("Acción");
 
         jMenuCompilar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F9, 0));
         jMenuCompilar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/ipn/vista/imagenes/compilar.png"))); // NOI18N
         jMenuCompilar.setText("Compilar");
+        jMenuCompilar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCompilarActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuCompilar);
 
         jMenuVTokens.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
         jMenuVTokens.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/ipn/vista/imagenes/verTokens.png"))); // NOI18N
         jMenuVTokens.setText("Ver Tokens");
+        jMenuVTokens.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuVTokensActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuVTokens);
 
         jMenuBar1.add(jMenu2);
@@ -115,41 +135,148 @@ public class GUICompiladorC extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane3)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lineCounter, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2))
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addComponent(lineCounter, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuNuevoActionPerformed
-        // TODO add your handling code here:
+        Nuevo nv=new Nuevo(this, true,this);
+        nv.show();
     }//GEN-LAST:event_jMenuNuevoActionPerformed
 
+    private void principalKeyPressed(java.awt.event.KeyEvent evt) {                                    
+        // TODO add your handling code here:
+        if(!this.getTitle().contains("*")){
+            this.setTitle(this.getTitle()+"*");
+        }
+    }   
+    
     private void jMenuAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAbrirActionPerformed
-        Abrir abrir = new Abrir();
-        abrir.setVisible(true);
+        Abrir a=new Abrir(this, true, this);
+        a.setVisible(true);
     }//GEN-LAST:event_jMenuAbrirActionPerformed
 
+    private void jMenuVTokensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuVTokensActionPerformed
+        VerTokens vtk=new VerTokens(this, true, dirNuevo, this);
+        vtk.show();
+    }//GEN-LAST:event_jMenuVTokensActionPerformed
+
+    public boolean Guardar(){
+        FileOutputStream out;
+        PrintStream p;
+
+        try {
+            out = new FileOutputStream(dirNuevo);
+            p = new PrintStream(out);
+            p.println(this.principal.getText());
+            p.close();
+            this.setTitle(this.getTitle().replace("*", ""));
+            return true;
+        } catch (Exception e) {
+            //System.err.println("BarbonC - No se puede guardar el archivo");
+            return false;
+        }
+    }
+    
+    private void jMenuGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuGuardarActionPerformed
+        if(Guardar())
+            JOptionPane.showMessageDialog(this,"CompiladorEjemplo - Guardado con exito");
+        else
+            JOptionPane.showMessageDialog(this,"CompiladorEjemplo - No se puede guardar el archivo");
+    }//GEN-LAST:event_jMenuGuardarActionPerformed
+
+    private void jMenuCompilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCompilarActionPerformed
+        try {
+            Guardar();
+            Process p = Runtime.getRuntime().exec("../Proyecto1.exe " + dirNuevo);
+            p.waitFor();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            String line = reader.readLine();
+            String el[]=line.split("-");
+            while(el.length<2) {
+                line = reader.readLine();
+                el=line.split("-");
+            }
+            if(line!=null){
+                
+                if(el[0].equals("Exito")){
+                    salida.setText("Compilado con exito.\nNumero de filas compiladas: "+el[1]);
+                }
+                else{
+                    salida.setText("Error en la linea: "+el[1]);
+                }
+            }
+
+        } catch (Exception e1) {
+            JOptionPane.showMessageDialog(this, e1.getMessage());
+        }
+    }//GEN-LAST:event_jMenuCompilarActionPerformed
+
+    public void contarFilas(){
+        int totalrows=jtxtArea.getLineCount();
+            lineCounter.setText("1\n");
+            for(int i=2; i<=totalrows;i++){
+                lineCounter.setText(lineCounter.getText()+i+"\n");
+            }
+    }
+    
+    private void jtxtAreaKeyReleased(java.awt.event.KeyEvent evt) {                                     
+        // TODO add your handling code here:
+        if(evt.isControlDown() || evt.getKeyCode()==10 || evt.getKeyCode()==8 || evt.getKeyCode()==127){
+            contarFilas();
+        }
+    }                                    
+
+    public void habilitarCampo(String dirnovo, String nomnovo){
+        this.setTitle("CompiladorEjemplo");
+        this.nomNuevo=nomnovo;
+        this.dirNuevo=dirnovo+nomNuevo+".jx";
+        this.setTitle(this.getTitle()+" - "+dirNuevo);
+        jtxtArea.enable(true);
+        contarFilas();
+    }
+    
+    public void habilitarCampo(String dirnovo){
+        this.setTitle("CompiladorEjemplo");
+        this.dirNuevo=dirnovo;
+        try {
+            FileInputStream fstream = new FileInputStream(dirNuevo);
+            DataInputStream in = new DataInputStream(fstream);
+            this.jtxtArea.setText("");
+            while (in.available() != 0) {
+                this.jtxtArea.setText(this.jtxtArea.getText() + in.readLine() + "\n");
+            }
+            in.close();
+            this.setTitle(this.getTitle()+" - "+dirNuevo);
+            jtxtArea.enable(true);
+            contarFilas();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,"File input error");
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -197,10 +324,9 @@ public class GUICompiladorC extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuNuevo;
     private javax.swing.JMenuItem jMenuVTokens;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
+    private javax.swing.JTextArea lineCounter;
+    private javax.swing.JTextArea principal;
+    private javax.swing.JTextArea salida;
     // End of variables declaration//GEN-END:variables
 }
