@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/arhel/Documents/NetBeansProjects/Proyecto_Compilador/src/mx/ipn/logica/ALexico/ALexer.java</file>
             <file>file:/C:/Users/arhel/Documents/NetBeansProjects/Proyecto_Compilador/src/mx/ipn/logica/ALexico/Alexico.java</file>
             <file>file:/C:/Users/arhel/Documents/NetBeansProjects/Proyecto_Compilador/src/mx/ipn/logica/ALexico/Token.java</file>
             <file>file:/C:/Users/arhel/Documents/NetBeansProjects/Proyecto_Compilador/src/mx/ipn/logica/ALexico/Lexer.flex</file>
+            <file>file:/C:/Users/arhel/Documents/NetBeansProjects/Proyecto_Compilador/src/mx/ipn/vista/AlexicoUI.java</file>
         </group>
     </open-files>
 </project-private>
